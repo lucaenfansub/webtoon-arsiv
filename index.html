@@ -74,17 +74,31 @@
             .ana-serbest-logo img { height: 350px; }
         }
 
-        .bildirim-btn {
-            position: fixed;
-            bottom: 20px; left: 20px;
-            width: 60px; height: 60px;
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-            box-shadow: 0 0 20px rgba(238, 156, 167, 0.6);
-            border-radius: 50%; border: none;
-            cursor: pointer; z-index: 3000;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s ease;
-        }
+.bildirim-btn {
+    position: fixed;
+    bottom: 20px; 
+    left: 20px;
+    width: 60px; 
+    height: 60px;
+    /* #84BE6A merkezli doğal yeşil gradient */
+    background: linear-gradient(135deg, #84BE6A, #5ea343); 
+    /* Gölgeyi de bu yeşil tonuna göre ayarladım */
+    box-shadow: 0 0 20px rgba(132, 190, 106, 0.5);
+    border-radius: 50%; 
+    border: none;
+    cursor: pointer; 
+    z-index: 3000;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bildirim-btn:hover {
+    transform: scale(1.1);
+    /* Üzerine gelince parlama biraz daha artsın */
+    box-shadow: 0 0 25px rgba(132, 190, 106, 0.8);
+}
 
         .duyuru-overlay {
             position: fixed;
