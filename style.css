@@ -45,34 +45,53 @@ body {
     pointer-events: none; /* KRİTİK: Kar tanelerine değil, altındaki resme tıklamanı sağlar */
     z-index: 50; /* Düşük bir rakam veriyoruz ki butonlar bunun üstüne çıkabilsin */
 }
-
-        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
-        .logo-sol { margin-left: 50px; }
-        .logo-sag { margin-right: 50px; }
-@media (max-width: 600px) { 
-    .site-logo { height: 60px; }
+@media (max-width: 600px) {
+    .site-logo { height: 75px; }
+    .site-header { padding: 10px 15px; }
+    .container { margin-top: 0px; }
     .bolum-basligi { font-size: 1.3em; }
-    .site-header { padding: 5px 10px; }
-    .container { margin-top: 80px; } /* ← bunu ekle */
 }
 
-.container { 
-    width: 100%; 
-    max-width: 800px; 
+.site-header {
+    width: 100%;
+    background: transparent;
+    align-self: stretch;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;        /* sayfayı kaydırınca da köşede kalsın */
+    top: 0;
+    left: 0;
+    z-index: 1000; }
+.site-logo {
+    height: 120px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}       
+.site-logo:hover {
+    transform: scale(1.05);
+} 
+.logo-sol {
+    margin-left: 0;
+}
+
+.logo-sag {
+    margin-right: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
     padding: 0 15px;
-    margin-top: 110px; 
+    margin-top: 0;   
     z-index: 10;
 }
 .ust-navigasyon { 
     padding: 5px 0;
     font-size: 0.9em;
 }
-@media (max-width: 600px) {
-    .site-logo { height: 50px; }
-    .container { margin-top: 80px; }
-}
-
 .ust-navigasyon a {
     color: #888 !important; 
     text-decoration: none !important; 
@@ -141,13 +160,6 @@ body {
     padding: 20px; 
     background: rgba(0, 0, 0, 0.6);
     border-radius: 15px;
-}
-
-/* MOBİL AYARLAR */
-@media (max-width: 600px) { 
-    .site-logo { height: 60px; }
-    .bolum-basligi { font-size: 1.3em; }
-    .site-header { padding: 5px 10px; }
 }
 .secici-buton {
     background-color: rgba(255, 255, 255, 0.1);
