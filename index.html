@@ -181,8 +181,22 @@
         }
 
         .bolum-kart:hover:not(.kilitli) { background: rgba(255, 255, 255, 0.05); }
-        .yeni-etiketi { background: var(--özetpembesi); color: #333; font-size: 0.7em; padding: 3px 8px; border-radius: 4px; margin-left: 10px; text-transform: uppercase; font-weight: bold; }
-        .bolum-tarih { font-size: 0.8rem; color: #888; }
+.yeni-etiketi { 
+    background: var(--özetpembesi); 
+    color: #fff; 
+    font-size: 0.7em; 
+    padding: 4px 10px; 
+    margin-left: 10px; 
+    text-transform: uppercase; 
+    font-weight: bold;
+    animation: parlama 0.6s ease-in-out infinite;
+}
+
+@keyframes parlama {
+    0%   { opacity: 1; transform: scale(1); }
+    50%  { opacity: 0.6; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}        .bolum-tarih { font-size: 0.8rem; color: #888; }
         .izlendi-ikon { width: 24px; opacity: 0; filter: invert(1); transition: 0.3s; }
         .izlendi-ikon.aktif { opacity: 0.6; }
         
