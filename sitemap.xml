@@ -1,52 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/</loc>
+    <loc>https://lucaenfansub.github.io/webtoon-arsiv/</loc>
     <priority>1.0</priority>
   </url>
 
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_1.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_2.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_3.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_4.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_5.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_6.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_7.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_8.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_9.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_10.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_11.html</loc>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_1.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_2.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_3.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_4.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_5.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_6.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_7.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_8.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_9.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_10.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_11.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_12.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_13.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_14.html</loc><priority>0.8</priority></url>
+  <url><loc>https://lucaenfansub.github.io/webtoon-arsiv/izle_bolum_15.html</loc><priority>0.8</priority></url>
 </urlset>
