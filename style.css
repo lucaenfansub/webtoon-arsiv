@@ -42,8 +42,9 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* KRİTİK: Çiçekler tıklamayı engellemez */
-    z-index: 50; /* Butonların altında, arka planın üstünde kalır */
+    pointer-events: none; /* Üzerine tıklanabilsin ama altındaki butonları engellemesin */
+    z-index: 9999 !important; /* En üstte olduğundan emin olalım */
+    display: block;
 }
 @media (max-width: 600px) {
     .site-logo { height: 75px; }
