@@ -42,8 +42,8 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* KRİTİK: Kar tanelerine değil, altındaki resme tıklamanı sağlar */
-    z-index: 50; /* Düşük bir rakam veriyoruz ki butonlar bunun üstüne çıkabilsin */
+    pointer-events: none; /* KRİTİK: Çiçekler tıklamayı engellemez */
+    z-index: 50; /* Butonların altında, arka planın üstünde kalır */
 }
 @media (max-width: 600px) {
     .site-logo { height: 75px; }
