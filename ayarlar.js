@@ -77,42 +77,62 @@ function karBaslat() {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let width, height, stars = [];
+    let width, height, petals = [];
 
     function resize() {
-        width = canvas.width  = window.innerWidth;
+        width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
     }
 
     resize();
     window.addEventListener('resize', resize);
 
-    class Star {
+    class Petal {
         constructor() { this.reset(); }
         reset() {
-            this.x     = Math.random() * width;
-            this.y     = Math.random() * height;
-            this.size  = Math.random() * 1.5 + 0.5;
-            this.speed = Math.random() * 0.8 + 0.2;
-            this.alpha = Math.random();
+            this.x = Math.random() * width;
+            this.y = Math.random() * height - height; // Ekranın üstünden başlasın
+            this.size = Math.random() * 7 + 5; // Çiçek boyutu
+            this.speed = Math.random() * 1.5 + 0.5; // Düşüş hızı
+            this.angle = Math.random() * 360; // Başlangıç açısı
+            this.spin = Math.random() * 2 - 1; // Kendi etrafında dönme hızı
+            this.wind = Math.random() * 1 - 0.5; // Hafif sağa sola sallanma
         }
         update() {
             this.y += this.speed;
-            if (this.y > height) this.y = -10;
+            this.x += this.wind;
+            this.angle += this.spin;
+
+            if (this.y > height) this.reset();
         }
         draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle * Math.PI / 180);
+            
+            // Pembe Çiçek/Yaprak Şekli Çizimi
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+            // Sol ve sağ loplar için elips benzeri şekil
+            ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+            ctx.fillStyle = "#F7CAC9"; // Senin buton renginle uyumlu pembe
             ctx.fill();
+            
+            // Çiçeğin ortasına hafif koyuluk (isteğe bağlı)
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size / 4, 0, Math.PI * 2);
+            ctx.fillStyle = "#E37383"; 
+            ctx.fill();
+
+            ctx.restore();
         }
     }
 
-    for (let i = 0; i < 100; i++) stars.push(new Star());
+    // 70 adet çiçek yeterli olacaktır (fazlası kasmaya sebep olabilir)
+    for (let i = 0; i < 70; i++) petals.push(new Petal());
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        stars.forEach(s => { s.update(); s.draw(); });
+        petals.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animate);
     }
 
