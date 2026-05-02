@@ -80,7 +80,7 @@ function karBaslat() {
     let width, height, petals = [];
     
     const flowerImg = new Image();
-    flowerImg.src = 'kp2_dm_2.gif'; // Dosya adını ve yolunu kontrol et!
+    flowerImg.src = 'kp2_dm.gif'; // Dosya adını ve yolunu kontrol et!
 
     // GÖRSEL YÜKLENDİĞİNDE ANİMASYONU BAŞLAT
     flowerImg.onload = () => {
