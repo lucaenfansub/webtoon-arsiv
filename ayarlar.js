@@ -74,18 +74,31 @@ function menuyuHazirla() {
 
 function karBaslat() {
     const canvas = document.getElementById('snowCanvas') || document.getElementById('kar-tuvali');
-    if (!canvas) return;
+    if (!canvas) {
+        console.error("Canvas bulunamadı!");
+        return;
+    }
 
     const ctx = canvas.getContext('2d');
     let width, height, petals = [];
     
     const flowerImg = new Image();
-    flowerImg.src = 'kp2_dm.gif'; // Dosya adını ve yolunu kontrol et!
+    flowerImg.src = 'kp2_dm.gif';
 
-    // GÖRSEL YÜKLENDİĞİNDE ANİMASYONU BAŞLAT
-    flowerImg.onload = () => {
-        animate(); 
-    };
+    // ANİMASYON FONKSİYONU
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+
+    // GÜVENLİ BAŞLATMA: Görsel zaten indiyse hemen başlat, inmediyse onload bekle.
+    if (flowerImg.complete) {
+        animate();
+    } else {
+        flowerImg.onload = () => animate();
+        flowerImg.onerror = () => console.error("Görsel yüklenemedi: kp2_dm.gif");
+    }
 
     function resize() {
         width = canvas.width = window.innerWidth;
@@ -100,19 +113,19 @@ function karBaslat() {
         reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height; 
-            this.size = Math.random() * 15 + 10; // Biraz daha belirgin olması için büyüttüm
-            this.speed = Math.random() * 0.4 + 0.2; 
+            this.size = Math.random() * 20 + 15; // Biraz daha büyüttüm görünürlük için
+            this.speed = Math.random() * 0.8 + 0.4; 
             this.angle = Math.random() * 360;
-            this.spin = Math.random() * 0.8 - 0.4;
-            this.horizontalShift = Math.random() * 0.5 - 0.25;
-            this.opacity = Math.random() * 0.5 + 0.3; // Şeffaflığı biraz artırdım ki başta göründüğünden emin olalım
+            this.spin = Math.random() * 2 - 1;
+            this.horizontalShift = Math.random() * 1 - 0.5;
+            this.opacity = Math.random() * 0.6 + 0.4; 
         }
         update() {
             this.y += this.speed;
             this.x += this.horizontalShift;
             this.angle += this.spin;
 
-            if (this.y > height) {
+            if (this.y > height + 20) {
                 this.y = -20;
                 this.x = Math.random() * width;
             }
@@ -123,14 +136,15 @@ function karBaslat() {
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle * Math.PI / 180);
             
-            // Görseli çiz
+            // Görseli çiz (Boyutları kontrol et)
             ctx.drawImage(flowerImg, -this.size/2, -this.size/2, this.size, this.size);
 
             ctx.restore();
         }
     }
 
-    for (let i = 0; i < 40; i++) petals.push(new Petal());
+    for (let i = 0; i < 50; i++) petals.push(new Petal());
+}
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
