@@ -52,7 +52,7 @@ function menuyuHazirla() {
         a.href = kilitliMi ? '#' : b.url;
         a.textContent = "Bölüm " + b.no + (kilitliMi ? " 🔒" : "");
         if (kilitliMi) {
-            a.style.opacity = "0.5";
+            a.style.opacity = "0.2";
             a.addEventListener('click', e => {
                 e.preventDefault();
                 alert('Bu bölüm henüz gizli! 🔒');
