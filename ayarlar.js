@@ -79,9 +79,13 @@ function karBaslat() {
     const ctx = canvas.getContext('2d');
     let width, height, petals = [];
     
-    // Çiçek görselini tanımla
     const flowerImg = new Image();
-    flowerImg.src = 'kp2_dm_2.gif'; // Dosya adının doğruluğundan emin ol
+    flowerImg.src = 'kp2_dm_2.gif'; // Dosya adını ve yolunu kontrol et!
+
+    // GÖRSEL YÜKLENDİĞİNDE ANİMASYONU BAŞLAT
+    flowerImg.onload = () => {
+        animate(); 
+    };
 
     function resize() {
         width = canvas.width = window.innerWidth;
@@ -96,12 +100,12 @@ function karBaslat() {
         reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height; 
-            this.size = Math.random() * 12 + 10; // Çiçek boyutu
-            this.speed = Math.random() * 0.4 + 0.2; // Çok yavaş süzülme
+            this.size = Math.random() * 15 + 10; // Biraz daha belirgin olması için büyüttüm
+            this.speed = Math.random() * 0.4 + 0.2; 
             this.angle = Math.random() * 360;
-            this.spin = Math.random() * 0.8 - 0.4; // Hafif dönme efekti
-            this.horizontalShift = Math.random() * 0.5 - 0.25; // Çok hafif sağa-sola salınım
-            this.opacity = Math.random() * 0.5 + 0.2; // %20 ile %70 arası şeffaflık (görünmezlik hissi için)
+            this.spin = Math.random() * 0.8 - 0.4;
+            this.horizontalShift = Math.random() * 0.5 - 0.25;
+            this.opacity = Math.random() * 0.5 + 0.3; // Şeffaflığı biraz artırdım ki başta göründüğünden emin olalım
         }
         update() {
             this.y += this.speed;
@@ -111,25 +115,21 @@ function karBaslat() {
             if (this.y > height) {
                 this.y = -20;
                 this.x = Math.random() * width;
-                this.opacity = Math.random() * 0.5 + 0.2;
             }
         }
         draw() {
             ctx.save();
-            ctx.globalAlpha = this.opacity; // Neredeyse görünmeyen etkiyi sağlar
+            ctx.globalAlpha = this.opacity;
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle * Math.PI / 180);
             
-            // Görseli çiz (Görsel yüklenmişse)
-            if (flowerImg.complete) {
-                ctx.drawImage(flowerImg, -this.size/2, -this.size/2, this.size, this.size);
-            }
+            // Görseli çiz
+            ctx.drawImage(flowerImg, -this.size/2, -this.size/2, this.size, this.size);
 
             ctx.restore();
         }
     }
 
-    // Ekranda aynı anda süzülen çiçek sayısı
     for (let i = 0; i < 40; i++) petals.push(new Petal());
 
     function animate() {
@@ -137,8 +137,6 @@ function karBaslat() {
         petals.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animate);
     }
-
-    animate();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
