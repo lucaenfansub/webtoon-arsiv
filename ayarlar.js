@@ -91,44 +91,42 @@ function karBaslat() {
         constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * width;
-            this.y = Math.random() * height - height; // Ekranın üstünden başlasın
-            this.size = Math.random() * 7 + 5; // Çiçek boyutu
-            this.speed = Math.random() * 1.5 + 0.5; // Düşüş hızı
-            this.angle = Math.random() * 360; // Başlangıç açısı
-            this.spin = Math.random() * 2 - 1; // Kendi etrafında dönme hızı
-            this.wind = Math.random() * 1 - 0.5; // Hafif sağa sola sallanma
+            this.y = Math.random() * height; // İlk açılışta ekranın her yerine dağılsın
+            this.size = Math.random() * 3 + 2; // Çok daha küçük, neredeyse nokta gibi
+            this.speed = Math.random() * 0.5 + 0.2; // Çok yavaş tempo
+            this.angle = Math.random() * 360;
+            this.spin = Math.random() * 0.5 - 0.25; // Çok hafif dönme
+            this.horizontalShift = Math.random() * 0.5 - 0.25; // Sağa sola çok hafif salınım
+            this.opacity = Math.random() * 0.4 + 0.2; // Yarı saydam, neredeyse görünmez
         }
         update() {
             this.y += this.speed;
-            this.x += this.wind;
+            this.x += this.horizontalShift;
             this.angle += this.spin;
 
-            if (this.y > height) this.reset();
+            // Ekrandan çıkınca tekrar en üstten başla
+            if (this.y > height) {
+                this.y = -10;
+                this.x = Math.random() * width;
+            }
         }
         draw() {
             ctx.save();
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle * Math.PI / 180);
             
-            // Pembe Çiçek/Yaprak Şekli Çizimi
+            // Minimalist ince yaprak formu
             ctx.beginPath();
-            // Sol ve sağ loplar için elips benzeri şekil
-            ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
-            ctx.fillStyle = "#F7CAC9"; // Senin buton renginle uyumlu pembe
-            ctx.fill();
-            
-            // Çiçeğin ortasına hafif koyuluk (isteğe bağlı)
-            ctx.beginPath();
-            ctx.arc(0, 0, this.size / 4, 0, Math.PI * 2);
-            ctx.fillStyle = "#E37383"; 
+            ctx.ellipse(0, 0, this.size, this.size / 3, 0, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(247, 202, 201, ${this.opacity})`; // Çok hafif pembe
             ctx.fill();
 
             ctx.restore();
         }
     }
 
-    // 70 adet çiçek yeterli olacaktır (fazlası kasmaya sebep olabilir)
-    for (let i = 0; i < 70; i++) petals.push(new Petal());
+    // Ekranda aynı anda 50 adet olması yeterli, daha fazlası dikkati dağıtır
+    for (let i = 0; i < 50; i++) petals.push(new Petal());
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
