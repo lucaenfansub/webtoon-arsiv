@@ -78,6 +78,10 @@ function karBaslat() {
 
     const ctx = canvas.getContext('2d');
     let width, height, petals = [];
+    
+    // Çiçek görselini tanımla
+    const flowerImg = new Image();
+    flowerImg.src = 'kp2_dm_2.gif'; // Dosya adının doğruluğundan emin ol
 
     function resize() {
         width = canvas.width = window.innerWidth;
@@ -91,42 +95,42 @@ function karBaslat() {
         constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * width;
-            this.y = Math.random() * height; // İlk açılışta ekranın her yerine dağılsın
-            this.size = Math.random() * 3 + 2; // Çok daha küçük, neredeyse nokta gibi
-            this.speed = Math.random() * 0.5 + 0.2; // Çok yavaş tempo
+            this.y = Math.random() * height; 
+            this.size = Math.random() * 12 + 10; // Çiçek boyutu
+            this.speed = Math.random() * 0.4 + 0.2; // Çok yavaş süzülme
             this.angle = Math.random() * 360;
-            this.spin = Math.random() * 0.5 - 0.25; // Çok hafif dönme
-            this.horizontalShift = Math.random() * 0.5 - 0.25; // Sağa sola çok hafif salınım
-            this.opacity = Math.random() * 0.4 + 0.2; // Yarı saydam, neredeyse görünmez
+            this.spin = Math.random() * 0.8 - 0.4; // Hafif dönme efekti
+            this.horizontalShift = Math.random() * 0.5 - 0.25; // Çok hafif sağa-sola salınım
+            this.opacity = Math.random() * 0.5 + 0.2; // %20 ile %70 arası şeffaflık (görünmezlik hissi için)
         }
         update() {
             this.y += this.speed;
             this.x += this.horizontalShift;
             this.angle += this.spin;
 
-            // Ekrandan çıkınca tekrar en üstten başla
             if (this.y > height) {
-                this.y = -10;
+                this.y = -20;
                 this.x = Math.random() * width;
+                this.opacity = Math.random() * 0.5 + 0.2;
             }
         }
         draw() {
             ctx.save();
+            ctx.globalAlpha = this.opacity; // Neredeyse görünmeyen etkiyi sağlar
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle * Math.PI / 180);
             
-            // Minimalist ince yaprak formu
-            ctx.beginPath();
-            ctx.ellipse(0, 0, this.size, this.size / 3, 0, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(247, 202, 201, ${this.opacity})`; // Çok hafif pembe
-            ctx.fill();
+            // Görseli çiz (Görsel yüklenmişse)
+            if (flowerImg.complete) {
+                ctx.drawImage(flowerImg, -this.size/2, -this.size/2, this.size, this.size);
+            }
 
             ctx.restore();
         }
     }
 
-    // Ekranda aynı anda 50 adet olması yeterli, daha fazlası dikkati dağıtır
-    for (let i = 0; i < 50; i++) petals.push(new Petal());
+    // Ekranda aynı anda süzülen çiçek sayısı
+    for (let i = 0; i < 40; i++) petals.push(new Petal());
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
